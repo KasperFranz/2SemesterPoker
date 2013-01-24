@@ -7,8 +7,10 @@ package model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import resources.DbIniParser;
 
 /**
  *
@@ -16,76 +18,108 @@ import java.sql.Statement;
  */
 public class DBhandler
 {
-    private Connection connection;
-    private Statement statement;
-    private ResultSet resultSet;
-    private ResultSet resultSetFornavn;
-    private ResultSet resultSetEfternavn;
+    private Connection conn;
+    private Statement stmt;
+    private ResultSet rs;
+    private DbIniParser db_values;
     
-    public DBhandler()
+    /**
+     * Connection to database is established as soon as object is created.
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
+    public DBhandler() throws ClassNotFoundException, SQLException
     {
-        connection = null;
-        statement = null;
-        resultSet = null;
-        resultSetFornavn = null;
-        resultSetEfternavn = null;
+        db_values = new DbIniParser();
+        connectToDB();
     }
     
-    public void connectToDB() throws ClassNotFoundException, SQLException, IllegalAccessException, InstantiationException
+    /**
+     * 
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
+    public void connectToDB() throws ClassNotFoundException, SQLException
     {
-        Class.forName("org.mysql.JDBC");  
-        connection = DriverManager.getConnection("jdbc:mysql:src/resources/rpg.db");
+        //Driveren loades - kræver at MySQL JDBC Driver er tilføjet under Libraries
+        Class.forName("com.mysql.jdbc.Driver");
+        //Der oprettes et Connection-objekt med port, databasenavn, brugernavn og password
+        conn = DriverManager.getConnection("jdbc:mysql://"+db_values.getHost()+":"+db_values.getPort()+"/"+db_values.getDatabase()+"", db_values.getDB_User(), db_values.getDB_Pass());
     }
     
+    /**
+     * Use this to close database connection opened by object
+     */
     public void closeDB() throws SQLException
     {
-        connection.close();
+        conn.close();
     }
     
-    public String[] getPlayer(String columnName, String tableName, int amount)
-    {
-        String[] returnArray;
-        String sql;
-        int counter;
-        int nums;
+    /**
+     * 
+     * @param table
+     * @param where
+     * @param order
+     * @param limit
+     * @param list for example "first_column", "second_column", "third_column" etc.
+     * @return String[][]
+     * @throws SQLException 
+     */
+    public String[][] getFromDB(String table, String where, String order, String limit, String ... list) throws SQLException
+    {        
+        String toGet = "";
+        int i = 1;
+        for (String value : list)
+        {
+            toGet += value;
+            if (i < list.length) toGet += ", ";
+            i++;
+        }
+        String sql = String.format("SELECT %s FROM %s %s %s %s", toGet, table, where, order, limit);
+        String[][] returnArray = null;
         
-        returnArray = new String[amount];
-        sql = "";
-        counter = 0;
-        nums = 0;
+        stmt = conn.createStatement();
+        rs = stmt.executeQuery(sql);
+
+        // Go to the last row
+        rs.last();
+        int numRows = rs.getRow();
+
+        // Reset row before iterating to get data
+        rs.beforeFirst();
+
+        ResultSetMetaData rsMetaData = rs.getMetaData();
+        int numberOfColumns = rsMetaData.getColumnCount();
         
-        try 
-        {  
-            statement = connection.createStatement(); 
-            sql = "SELECT " + columnName + " FROM " + tableName + " ORDER BY RANDOM() LIMIT " + amount;
-            //System.out.ntln("SQL: " + sql);
-            resultSet = statement.executeQuery(sql);   
-            
-            while(resultSet.next())
+        returnArray = new String[numRows][numberOfColumns];
+        int j = 0;
+        while (rs.next())
+        {
+            int k = 0;
+            for (String value : list)
             {
-                returnArray[counter] = resultSet.getString(columnName);
-                counter++;
-                
-                //System.out.println(resultSet.getString(columnName));
+                returnArray[j][k] = rs.getString(value);
+                k++;
             }
-        } 
-        catch (Exception e) 
-        {  
-            System.out.println("Der opstod en fejl under hentning af data fra DB. " + e);  
+            j++;
         }
-        finally 
-        {  
-            try 
-            {  
-                resultSet.close();  
-                statement.close();  
-                connection.close();  
-            } 
-            catch (Exception e) 
-            {  
-                System.out.println("Der opstod en fejl i forsøget på at lukke forbindelserne. " + e);  
-            }  
-        }
+        
         return returnArray;
+    }
+    
+    /**
+     * 
+     * @param queryString for example (INSERT INTO table (column_one, column2, column3) VALUES ("1", "2", "3")
+     * @return
+     * @throws SQLException 
+     */
+    public int manipulateDB(String queryString) throws SQLException
+    {        
+        String sql = String.format("%s", queryString);
+        int affectedRows = 0;
+
+        stmt = conn.createStatement();
+        affectedRows = stmt.executeUpdate(sql);
+        return affectedRows;
     }
 }
