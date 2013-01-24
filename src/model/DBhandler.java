@@ -18,10 +18,12 @@ import resources.DbIniParser;
  */
 public class DBhandler
 {
+    /*
+    * Variables
+    */
     private Connection conn;
     private Statement stmt;
     private ResultSet rs;
-    private DbIniParser db_values;
     
     /**
      * Connection to database is established as soon as object is created.
@@ -30,7 +32,6 @@ public class DBhandler
      */
     public DBhandler() throws ClassNotFoundException, SQLException
     {
-        db_values = new DbIniParser();
         connectToDB();
     }
     
@@ -41,6 +42,8 @@ public class DBhandler
      */
     public void connectToDB() throws ClassNotFoundException, SQLException
     {
+        DbIniParser db_values = new DbIniParser();
+
         //Driveren loades - kræver at MySQL JDBC Driver er tilføjet under Libraries
         Class.forName("com.mysql.jdbc.Driver");
         //Der oprettes et Connection-objekt med port, databasenavn, brugernavn og password
@@ -76,6 +79,7 @@ public class DBhandler
             i++;
         }
         String sql = String.format("SELECT %s FROM %s %s %s %s", toGet, table, where, order, limit);
+
         String[][] returnArray = null;
         
         stmt = conn.createStatement();
@@ -106,20 +110,9 @@ public class DBhandler
         
         return returnArray;
     }
-    
-    /**
-     * 
-     * @param queryString for example (INSERT INTO table (column_one, column2, column3) VALUES ("1", "2", "3")
-     * @return
-     * @throws SQLException 
-     */
-    public int manipulateDB(String queryString) throws SQLException
-    {        
-        String sql = String.format("%s", queryString);
-        int affectedRows = 0;
 
-        stmt = conn.createStatement();
-        affectedRows = stmt.executeUpdate(sql);
-        return affectedRows;
-    }
+    /*
+     * Used to put data in DB
+     */
+    
 }
