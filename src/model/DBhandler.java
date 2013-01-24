@@ -58,7 +58,7 @@ public class DBhandler
         {  
             statement = connection.createStatement(); 
             sql = "SELECT " + columnName + " FROM " + tableName + " ORDER BY RANDOM() LIMIT " + amount;
-            //System.out.println("SQL: " + sql);
+            //System.out.ntln("SQL: " + sql);
             resultSet = statement.executeQuery(sql);   
             
             while(resultSet.next())
