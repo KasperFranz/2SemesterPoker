@@ -11,14 +11,14 @@ package model;
 public class Card implements Comparable {
 
     private int rank, suit;
-    private static String[] suits = {"Hjerter", "Spar", "Ruder", "Klør"};
-    private static String[] ranks = {"Es", "2", "3", "4", "5", "6", "7", "8", "9", "10", "knægt", "dame", "konge"};
+    private static String[] suits = {"placeholder", "Hjerter", "Spar", "Ruder", "Klør"};
+    private static String[] ranks = {"placeholder", "Es", "2", "3", "4", "5", "6", "7", "8", "9", "10", "knægt", "dame", "konge"};
 
     Card(int suit, int rank) {
         this.rank = rank;
         this.suit = suit;
-    }
-
+    }   
+    // Sammenligning af kort, har ingen ide om det virker
     @Override 
     public int compareTo(Object o) {
         Card card = (Card) o;
@@ -38,7 +38,7 @@ public class Card implements Comparable {
     public int getSuit() {
         return suit;
     }
-
+    // Returner hele kortet som string, f.eks. "Hjerter konge"
     public @Override
     String toString() {
         return suits[suit] + " " + ranks[rank];
