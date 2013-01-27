@@ -8,7 +8,7 @@ package model;
  *
  * @author NiklasRenner
  */
-public class Card implements Comparable {
+public class Card implements Comparable{
 
     private int rank, suit;
     private static String[] suits = {"placeholder", "Hjerter", "Spar", "Ruder", "Klør"};
@@ -18,7 +18,7 @@ public class Card implements Comparable {
         this.rank = rank;
         this.suit = suit;
     }   
-    // Sammenligning af kort, har ingen ide om det virker
+    // Sammenligning af kort
     @Override 
     public int compareTo(Object o) {
         Card card = (Card) o;
