@@ -8,27 +8,30 @@ package model;
  *
  * @author NiklasRenner
  */
-public class Card implements Comparable{
+public class Card implements Comparable<Card>{
 
     private int rank, suit;
     private static String[] suits = {"placeholder", "Hjerter", "Spar", "Ruder", "Klør"};
     private static String[] ranks = {"placeholder", "Es", "2", "3", "4", "5", "6", "7", "8", "9", "10", "knægt", "dame", "konge"};
 
-    Card(int suit, int rank) {
+    public Card(int suit, int rank) {
         this.rank = rank;
         this.suit = suit;
     }   
     // Sammenligning af kort
     @Override 
-    public int compareTo(Object o) {
-        Card card = (Card) o;
+    public int compareTo(Card c) {
+        Card card = c;
+        int sort;
+    
         if (this.rank < card.getRank()) {
-            return -1;
+            sort = -1;
         } else if (this.rank > card.getRank()) {
-            return 1;
+            sort = 1;
         } else {
-            return 0;
+            sort = 0;
         }
+        return sort;
     }
 
     public int getRank() {

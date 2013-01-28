@@ -15,7 +15,7 @@ public class Deck {
 
     private ArrayList<Card> cards;
 
-    Deck() {
+    public Deck() {
         cards = new ArrayList<Card>();
         Random randomGen = new Random();
         Card tmp;
