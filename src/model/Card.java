@@ -22,13 +22,16 @@ public class Card implements Comparable<Card>{
     @Override 
     public int compareTo(Card c) {
         Card card = c;
+        int sort;
+    
         if (this.rank < card.getRank()) {
-            return -1;
+            sort = -1;
         } else if (this.rank > card.getRank()) {
-            return 1;
+            sort = 1;
         } else {
-            return 0;
+            sort = 0;
         }
+        return sort;
     }
 
     public int getRank() {
