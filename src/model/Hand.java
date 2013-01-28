@@ -8,31 +8,16 @@ package model;
  *
  * @author Allan
  */
-public class Hand implements Comparable{
+public class Hand implements Comparable {
+
     public Card[] kort;
-    public Hand(Card[] kort){
+
+    public Hand(Card[] kort) {
         this.kort = kort;
-        
-        
     }
 
     @Override
-    public int compareTo(Object o)
-    {
-        Hand hand = (Hand) o;
-        int g;
-        if (this.rating == hand.getRating())
-        {
-            g = 0;
-        }
-        else if (this.rating > hand.getRating())
-        {
-            g = 1;
-        }
-        else
-        {
-            g = -1;
-        }
-        return g;
+    public int compareTo(Object o) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
