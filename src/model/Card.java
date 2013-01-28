@@ -14,7 +14,7 @@ public class Card implements Comparable{
     private static String[] suits = {"placeholder", "Hjerter", "Spar", "Ruder", "Klør"};
     private static String[] ranks = {"placeholder", "Es", "2", "3", "4", "5", "6", "7", "8", "9", "10", "knægt", "dame", "konge"};
 
-    Card(int suit, int rank) {
+    public Card(int suit, int rank) {
         this.rank = rank;
         this.suit = suit;
     }   
