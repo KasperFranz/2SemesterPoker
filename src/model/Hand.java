@@ -1,16 +1,12 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-
 /**
  *
  * @author NiklasRenner
  */
 public class Hand implements Comparable<Hand> {
 
-    public ArrayList<Card> cards;
+    private Card[] cards;
     private int[] cardValues;
     private int[] finalRank;
     private int[] sortedRank;
@@ -24,7 +20,8 @@ public class Hand implements Comparable<Hand> {
 
     public Hand(Card[] kort) {
 
-        cards = new ArrayList<>();
+        cards = new Card[5];
+        cards = kort;
         cardValues = new int[14];
         finalRank = new int[6];
         sortedRank = new int[5];
@@ -33,18 +30,15 @@ public class Hand implements Comparable<Hand> {
         sameRank2 = 1;
         lowGroupRank = 0;
         highGroupRank = 0;
+
+        //Sætter alle kort fra hånden ind i et int array på de pladser som tilsvarer kortenes værdi
+        for (int i = 0; i < cards.length; i++) {
+            cardValues[cards[i].getRank()]++;
+        }
+        
         straight = isStraight();
         flush = isFlush();
 
-        //Laver array om til arraylist or sorterer kortene
-        cards.addAll(Arrays.asList(kort));
-        Collections.sort(cards);
-        //Sætter alle kort fra hånden ind i et int array på de pladser som tilsvarer kortenes værdi
-        for (int i = 0;
-                i < cards.size();
-                i++) {
-            cardValues[cards.get(i).getRank()]++;
-        }
         //Tjekker for ens kort(tæller ned så den tager højeste kort først)
         for (int x = 13; x >= 1; x--) {
             //Hvis der er flere end 1 kort med samme værdi
@@ -163,6 +157,7 @@ public class Hand implements Comparable<Hand> {
         if (sameRank == 3 && sameRank2 == 2) {
             ranking[0] = 7;
             ranking[1] = highGroupRank;
+            ranking[2] = lowGroupRank;
         }
 
         //Hvis der er 4 ens sættes rank til 8
@@ -193,9 +188,10 @@ public class Hand implements Comparable<Hand> {
         boolean result = false;
         for (int x = 1; x <= 9; x++) {
             if (cardValues[x] == 1 && cardValues[x + 1] == 1 && cardValues[x + 2] == 1
-                    && cardValues[x + 3] == 1 && cardValues[x + 4] == 1 && result == false) {
+                    && cardValues[x + 3] == 1 && cardValues[x + 4] == 1) {
                 result = true;
                 topStraight = x + 4;
+                break;
             }
         }
 
@@ -213,8 +209,8 @@ public class Hand implements Comparable<Hand> {
 
         //Tjekker for flush ved at antage at der er en flush indtil den finder 2 kort der ikke matcher
         boolean result = true;
-        for (int x = 0; x < 4; x++) {
-            if (cards.get(x).getSuit() != cards.get(x + 1).getSuit()) {
+        for (int i = 0; i < cards.length-1; i++) {
+            if (cards[i].getSuit() != cards[i + 1].getSuit()) {
                 result = false;
             }
         }
@@ -234,41 +230,42 @@ public class Hand implements Comparable<Hand> {
         return 0;
     }
 
-    public String handToString() {
+    @Override
+    public String toString() {
         String nameOfHand;
         switch (finalRank[0]) {
 
             case 1:
-                nameOfHand = "high card " + Card.rankAsString(finalRank[1]);
+                nameOfHand = "High card " + Card.rankAsString(finalRank[1]);
                 break;
             case 2:
-                nameOfHand = "par " + Card.rankAsString(finalRank[1]);
+                nameOfHand = "Par " + Card.rankAsString(finalRank[1]);
                 break;
             case 3:
-                nameOfHand = "to par: " + Card.multiRankAsString(finalRank[1]) + " og "
+                nameOfHand = "To par: " + Card.multiRankAsString(finalRank[1]) + " og "
                         + Card.multiRankAsString(finalRank[2]);
                 break;
             case 4:
                 nameOfHand = "3 ens: " + Card.multiRankAsString(finalRank[1]);
                 break;
             case 5:
-                nameOfHand = "straight med " + Card.rankAsString(finalRank[1]) + " som højeste kort";
+                nameOfHand = "Straight med " + Card.rankAsString(finalRank[1]) + " som højeste kort";
                 break;
             case 6:
-                nameOfHand = "flush";
+                nameOfHand = "Flush";
                 break;
             case 7:
-                nameOfHand = "fuldt hus: " + Card.multiRankAsString(finalRank[1]) + " over "
+                nameOfHand = "Fuldt hus: " + Card.multiRankAsString(finalRank[1]) + " over "
                         + Card.multiRankAsString(finalRank[2]);
                 break;
             case 8:
                 nameOfHand = "4 ens: " + Card.multiRankAsString(finalRank[1]);
                 break;
             case 9:
-                nameOfHand = "straight flush med " + Card.rankAsString(finalRank[1]) + " som højeste kort";
+                nameOfHand = "Straight flush med " + Card.rankAsString(finalRank[1]) + " som højeste kort";
                 break;
             case 10:
-                nameOfHand = "royal flush!";
+                nameOfHand = "Royal flush!";
                 break;
             default:
                 nameOfHand = "error in Hand.display: ranking[0] contains invalid ranking";
