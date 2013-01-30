@@ -35,7 +35,7 @@ public class TestMain
         kort2[4] = new Card(2, 13);
         
         Card[] kort3 = new Card[5];
-        kort3[0] = new Card(3, 9);
+        kort3[0] = new Card(3, 1);
         kort3[1] = new Card(2, 10);
         kort3[2] = new Card(2, 11);
         kort3[3] = new Card(2, 12);
@@ -46,7 +46,7 @@ public class TestMain
         kort4[1] = new Card(2, 5);
         kort4[2] = new Card(2, 11);
         kort4[3] = new Card(2, 12);
-        kort4[4] = new Card(2, 13);
+        kort4[4] = new Card(4, 13);
         
         Card[] kort5 = new Card[5];
         kort5[0] = new Card(2, 9);
@@ -62,10 +62,10 @@ public class TestMain
         Hand hand5 = new Hand(kort5);
         
         ArrayList<Hand> hands = new ArrayList<>();
-       hands.add(hand2);
        hands.add(hand);
-       hands.add(hand4);
+       hands.add(hand2);
        hands.add(hand3);
+       hands.add(hand4);
        hands.add(hand5);
        
         System.out.println("før sort");
