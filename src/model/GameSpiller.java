@@ -16,9 +16,12 @@ public class GameSpiller {
     private int betThisRound;
     private Card[] card;
 
-    public GameSpiller(Spiller spiller, FiveCardDraw game) {
+    public void GameSpiller() {
+    }
+
+    public GameSpiller(Spiller player, FiveCardDraw game) {
         game.addPlayer(this.player);
-        this.player = spiller;
+        this.player = player;
         this.game = game;
         stack = 200;
     }
@@ -28,6 +31,7 @@ public class GameSpiller {
         betThisRound = 20;
         if (checkBalance() == true) {
             stack = stack - getBet();
+            game.addToPot(getBet());
             bet = true;
         } else {
             bet = false;
@@ -40,7 +44,7 @@ public class GameSpiller {
         boolean check;
         if (getStack() >= getBet()) {
             check = true;
-        } else {    //            Spilleren skal checke, folde eller gå all-in
+        } else {    //            Spilleren skal evt. checke, folde eller gå all-in ?her?
             check = false;
         }
         return check;
@@ -48,6 +52,12 @@ public class GameSpiller {
 
 //    Ved ikke om vi får brug for denne metode?
 //    public boolean allIn() {
+//        boolean allIn;
+//        if (getStack() <= getBet()) {
+//            allIn = true;
+//        } else {
+//            allIn = false;
+//        }
 //        return allIn;
 //    }
     public int getBet() {
@@ -56,5 +66,13 @@ public class GameSpiller {
 
     public int getStack() {
         return stack;
+    }
+    
+    public void setBet(int betThisRound){
+        this.betThisRound = betThisRound;
+    }
+    
+    public void setStack(int stack){
+        this.stack = stack;
     }
 }
