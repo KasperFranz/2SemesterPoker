@@ -29,7 +29,7 @@ public class GameSpiller {
     public boolean bet() {
         boolean bet;
         betThisRound = 20;
-        if (checkBalance() == true) {
+        if (checkBalance()) {
             stack = stack - getBet();
             game.addToPot(getBet());
             bet = true;
