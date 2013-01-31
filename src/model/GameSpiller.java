@@ -10,33 +10,51 @@ package model;
  */
 public class GameSpiller {
 
-    private Spil[] game;
-    private Spiller[] spiller;
-    private int buyIn;
+    private FiveCardDraw game;
+    private Spiller player;
+    private int stack;  // Hedder 'indsats' i klassediagrammet
     private int betThisRound;
-    private Card[] kort;
+    private Card[] card;
 
-    public GameSpiller(Spiller[] spiller, FiveCardDraw game) {
-        game.addPlayer(this.spiller);
-        buyIn = 200;
-        betThisRound = 20;
+    public GameSpiller(Spiller spiller, FiveCardDraw game) {
+        game.addPlayer(this.player);
+        this.player = spiller;
+        this.game = game;
+        stack = 200;
     }
 
-//    public void GameSpiller(Spiller[] spiller){
-//        
-//    }
-//    
-//    public void GameSpiller(FiveCardDraw game){
-//        
-//    }
-    
     public boolean bet() {
-        return true;
+        boolean bet;
+        betThisRound = 20;
+        if (checkBalance() == true) {
+            stack = stack - getBet();
+            bet = true;
+        } else {
+            bet = false;
+        }
+        return bet;
     }
 
-    private void checkBalance(int chipKonto) {
-        boolean balance;
-        balance = true;
+//    Har lavet methoden om til boolean så jeg kan return på om det er true/false. Kunne ikke lige se hvordan det ellers skulle laves
+    private boolean checkBalance() {
+        boolean check;
+        if (getStack() >= getBet()) {
+            check = true;
+        } else {    //            Spilleren skal checke, folde eller gå all-in
+            check = false;
+        }
+        return check;
+    }
 
+//    Ved ikke om vi får brug for denne metode?
+//    public boolean allIn() {
+//        return allIn;
+//    }
+    public int getBet() {
+        return betThisRound;
+    }
+
+    public int getStack() {
+        return stack;
     }
 }
