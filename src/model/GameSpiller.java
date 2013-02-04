@@ -19,16 +19,20 @@ public class GameSpiller {
     public void GameSpiller() {
     }
 
+    public void addHand(Card[] hand) {
+        this.hand = hand;
+    }
+
+    public Card[] getHand() {
+        return hand;
+    }
+
     public GameSpiller(Spiller player, FiveCardDraw game) {
         this.player = player;
         this.game = game;
         this.game.addPlayer(this.player);
         stack = 200;
         hand = new Card[5];
-    }
-    
-    public void addHand(Card[] hand){
-        this.hand = hand;
     }
 
     public boolean bet() {
@@ -72,12 +76,12 @@ public class GameSpiller {
     public int getStack() {
         return stack;
     }
-    
-    public void setBet(int betThisRound){
+
+    public void setBet(int betThisRound) {
         this.betThisRound = betThisRound;
     }
-    
-    public void setStack(int stack){
+
+    public void setStack(int stack) {
         this.stack = stack;
     }
 }
