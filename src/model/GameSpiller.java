@@ -14,7 +14,7 @@ public class GameSpiller {
     private Spiller player;
     private int stack;  // Hedder 'indsats' i klassediagrammet
     private int betThisRound;
-    private Card[] card;
+    private Card[] hand;
 
     public void GameSpiller() {
     }
@@ -24,6 +24,11 @@ public class GameSpiller {
         this.player = player;
         this.game = game;
         stack = 200;
+        hand = new Card[5];
+    }
+    
+    public void addHand(Card[] hand){
+        this.hand = hand;
     }
 
     public boolean bet() {
