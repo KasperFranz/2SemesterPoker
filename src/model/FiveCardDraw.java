@@ -29,6 +29,8 @@ public class FiveCardDraw
     public void startSpil()
     {
         deck = new Deck();
+        giveCard();
+        
     }
 
     public void giveCard()
