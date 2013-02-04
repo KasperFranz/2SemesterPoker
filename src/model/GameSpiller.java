@@ -8,52 +8,66 @@ package model;
  *
  * @author Jacob
  */
-public class GameSpiller {
+public class GameSpiller implements Comparable<GameSpiller>
+{
 
     private FiveCardDraw game;
     private Spiller player;
     private int stack;  // Hedder 'indsats' i klassediagrammet
     private int betThisRound;
-    private Card[] hand;
+    private Card[] cards;
 
-    public void GameSpiller() {
-    }
-
-    public void addHand(Card[] hand) {
-        this.hand = hand;
-    }
-
-    public Card[] getHand() {
-        return hand;
-    }
-
-    public GameSpiller(Spiller player, FiveCardDraw game) {
+    public GameSpiller(Spiller player, FiveCardDraw game)
+    {
         this.player = player;
         this.game = game;
-        this.game.addPlayer(this.player);
+        this.game.addPlayer(this);
         stack = 200;
-        hand = new Card[5];
+        cards = new Card[5];
     }
 
-    public boolean bet() {
+    public void GameSpiller()
+    {
+        // Code here...
+    }
+
+    public void addHand(Card[] hand)
+    {
+        this.cards = hand;
+    }
+
+    public Card[] getHand()
+    {
+        return cards;
+    }
+
+    public boolean bet()
+    {
         boolean bet;
         betThisRound = 20;
-        if (checkBalance()) {
+        if (checkBalance())
+        {
             stack = stack - getBet();
             game.addToPot(getBet());
             bet = true;
-        } else {
+        }
+        else
+        {
             bet = false;
         }
         return bet;
     }
 
 //    Har lavet methoden om til boolean så jeg kan return på om det er true/false. Kunne ikke lige se hvordan det ellers skulle laves
-    private boolean checkBalance() {
+    private boolean checkBalance()
+    {
         boolean check;
-        if (getStack() >= getBet()) {
+        if (getStack() >= getBet())
+        {
             check = true;
-        } else {    //            Spilleren skal evt. checke, folde eller gå all-in ?her?
+        }
+        else
+        {    //            Spilleren skal evt. checke, folde eller gå all-in ?her?
             check = false;
         }
         return check;
@@ -69,19 +83,45 @@ public class GameSpiller {
 //        }
 //        return allIn;
 //    }
-    public int getBet() {
+    public int getBet()
+    {
         return betThisRound;
     }
 
-    public int getStack() {
+    public int getStack()
+    {
         return stack;
     }
 
-    public void setBet(int betThisRound) {
+    public void setBet(int betThisRound)
+    {
         this.betThisRound = betThisRound;
     }
 
-    public void setStack(int stack) {
+    public void setStack(int stack)
+    {
         this.stack = stack;
+    }
+
+    public Hand bestHand()
+    {
+// laves om når en beskrivelse er der til
+        Hand hand;
+        if (cards.length == 5)
+        {
+            hand = new Hand(cards);
+        }
+        else
+        {
+            throw new UnsupportedOperationException("Not supported yet.");
+
+        }
+        return hand;
+    }
+
+    @Override
+    public int compareTo(GameSpiller o)
+    {
+        return 0;
     }
 }

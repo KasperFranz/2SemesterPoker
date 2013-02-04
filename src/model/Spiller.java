@@ -4,34 +4,41 @@ package model;
  *
  * @author Mathias
  */
-public class Spiller {
+public class Spiller
+{
 
     private int kontonr;
     private int chipKonto;
 
-    public Spiller(int kontonr) {
+    public Spiller(int kontonr)
+    {
         this.kontonr = kontonr;
         chipKonto = 0;
     }
 
-    public int getKontonr() {
+    public int getKontonr()
+    {
         return kontonr;
     }
 
-    public int getChipKonto() {
+    public int getChipKonto()
+    {
         return chipKonto;
     }
 
-    public void setKontonr(int kontonr) {
+    public void setKontonr(int kontonr)
+    {
         this.kontonr = kontonr;
     }
 
-    public void setChipKonto(int chipKonto) {
+    public void setChipKonto(int chipKonto)
+    {
         this.chipKonto = chipKonto;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Spiller{" + "kontonr = " + kontonr + ", chipKonto = " + chipKonto + '}';
     }
 }
