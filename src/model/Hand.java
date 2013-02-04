@@ -35,7 +35,7 @@ public class Hand implements Comparable<Hand> {
         for (int i = 0; i < cards.length; i++) {
             cardValues[cards[i].getRank()]++;
         }
-        
+
         straight = isStraight();
         flush = isFlush();
 
@@ -205,11 +205,11 @@ public class Hand implements Comparable<Hand> {
 
     }
 
-   private final boolean isFlush() {
+    private final boolean isFlush() {
 
         //Tjekker for flush ved at antage at der er en flush indtil den finder 2 kort der ikke matcher
         boolean result = true;
-        for (int i = 0; i < cards.length-1; i++) {
+        for (int i = 0; i < cards.length - 1; i++) {
             if (cards[i].getSuit() != cards[i + 1].getSuit()) {
                 result = false;
             }
@@ -220,14 +220,17 @@ public class Hand implements Comparable<Hand> {
 
     @Override
     public int compareTo(Hand hand) {
+        int tmp = 0;
         for (int x = 0; x < 6; x++) {
-            if (this.finalRank[x] > hand.finalRank[x]) {
-                return 1;
-            } else if (this.finalRank[x] < hand.finalRank[x]) {
-                return -1;
+            if (tmp == 0) {
+                if (this.finalRank[x] > hand.finalRank[x]) {
+                    tmp = 1;
+                } else if (this.finalRank[x] < hand.finalRank[x]) {
+                    tmp = -1;
+                }
             }
         }
-        return 0;
+        return tmp;
     }
 
     @Override
