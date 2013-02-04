@@ -222,13 +222,13 @@ public class Hand implements Comparable<Hand> {
     public int compareTo(Hand hand) {
         int tmp = 0;
         for (int x = 0; x < 6; x++) {
-            if (tmp == 0) {
                 if (this.finalRank[x] > hand.finalRank[x]) {
                     tmp = 1;
+                    x=6;
                 } else if (this.finalRank[x] < hand.finalRank[x]) {
                     tmp = -1;
+                    x=6;
                 }
-            }
         }
         return tmp;
     }
