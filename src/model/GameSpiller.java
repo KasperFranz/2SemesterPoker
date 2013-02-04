@@ -20,9 +20,9 @@ public class GameSpiller {
     }
 
     public GameSpiller(Spiller player, FiveCardDraw game) {
-        game.addPlayer(this.player);
         this.player = player;
         this.game = game;
+        this.game.addPlayer(this.player);
         stack = 200;
         hand = new Card[5];
     }
