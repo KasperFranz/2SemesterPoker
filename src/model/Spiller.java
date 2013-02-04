@@ -8,19 +8,10 @@ public class Spiller {
 
     private int kontonr;
     private int chipKonto;
-    private Card[] hand;
 
     public Spiller(int kontonr) {
         this.kontonr = kontonr;
         chipKonto = 0;
-    }
-    
-    public void addHand(Card[] hand){
-        this.hand = hand;
-    }
-    
-    public Card[] getHand(){
-        return hand;
     }
 
     public int getKontonr() {

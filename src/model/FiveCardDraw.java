@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class FiveCardDraw
 {
 
-    public ArrayList<Spiller> spillere;
+    public ArrayList<GameSpiller> spillere;
     public GameSpiller dealer;
     public int pulje;
     public Deck deck;
@@ -48,9 +48,8 @@ public class FiveCardDraw
     {
         
     }
-
-    public void addPlayer(Spiller spiller)
-    {
+    
+    public void addPlayer(GameSpiller spiller){
         spillere.add(spiller);
     }
 
