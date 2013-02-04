@@ -17,9 +17,9 @@ public class FiveCardDraw {
     public int pulje;
     public Deck deck;
 
-    public FiveCardDraw(GameSpiller dealer, ArrayList<Spiller> spillere) {
+    public FiveCardDraw(GameSpiller dealer) {
         this.dealer = dealer;
-        this.spillere = spillere;
+        spillere = new ArrayList<>();
         deck = new Deck();
         pulje = 0;
     }
@@ -34,10 +34,14 @@ public class FiveCardDraw {
             for (int j = 0; j < 5; j++) {
                 cards[j] = deck.drawFromDeck();
             }
-            spillere.addHand(cards);
+            spillere.get(i).addHand(cards);
         }
     }
 
     public void endGame() {
+    }
+    
+    public void addPlayer(Spiller spiller){
+        spillere.add(spiller);
     }
 }
