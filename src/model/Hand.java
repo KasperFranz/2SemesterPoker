@@ -182,7 +182,7 @@ public class Hand implements Comparable<Hand> {
         return ranking;
     }
 
-    public final boolean isStraight() {
+    private final boolean isStraight() {
 
         //Tjekker for straight
         boolean result = false;
@@ -205,7 +205,7 @@ public class Hand implements Comparable<Hand> {
 
     }
 
-    public final boolean isFlush() {
+   private final boolean isFlush() {
 
         //Tjekker for flush ved at antage at der er en flush indtil den finder 2 kort der ikke matcher
         boolean result = true;
