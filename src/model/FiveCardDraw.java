@@ -10,24 +10,5 @@ package model;
  */
 public class FiveCardDraw
 {
-    Spiller[] spillere;
-    Deck kort;
-    int puljen;
-    Card[] board;
-    Spiller aktivSpiller;
     
-    public FiveCardDraw()
-    {
-        
-    }
-    
-    public FiveCardDraw(GameSpiller gameSpiller)
-    {
-        
-    }
-    
-    public void endGame()
-    {
-        
-    }
 }
