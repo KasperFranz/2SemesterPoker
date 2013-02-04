@@ -10,38 +10,52 @@ import java.util.ArrayList;
  *
  * @author NiklasRenner
  */
-public class FiveCardDraw {
+public class FiveCardDraw
+{
 
     public ArrayList<Spiller> spillere;
     public GameSpiller dealer;
     public int pulje;
     public Deck deck;
 
-    public FiveCardDraw(GameSpiller dealer) {
+    public FiveCardDraw(GameSpiller dealer)
+    {
         this.dealer = dealer;
         spillere = new ArrayList<>();
         deck = new Deck();
         pulje = 0;
     }
 
-    public void startSpil() {
+    public void startSpil()
+    {
         deck = new Deck();
     }
 
-    public void giveCard() {
-        for (int i = 0; i < spillere.size(); i++) {
+    public void giveCard()
+    {
+        for (int i = 0; i < spillere.size(); i++)
+        {
             Card[] cards = new Card[5];
-            for (int j = 0; j < 5; j++) {
+            for (int j = 0; j < 5; j++)
+            {
                 cards[j] = deck.drawFromDeck();
             }
             spillere.get(i).addHand(cards);
         }
     }
 
-    public void endGame() {
+    public void endGame()
+    {
+        
     }
-    
-    public void addPlayer(Spiller spiller){
+
+    public void addPlayer(Spiller spiller)
+    {
         spillere.add(spiller);
+    }
+
+    void addToPot(int bet)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 }
