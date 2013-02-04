@@ -4,11 +4,44 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author Allan
+ * @author NiklasRenner
  */
-public class FiveCardDraw
-{
+public class FiveCardDraw {
+
+    public ArrayList<Spiller> spillere;
+    public GameSpiller dealer;
+    public int pulje;
+    public Deck deck;
+
+    public FiveCardDraw(GameSpiller dealer) {
+        this.dealer = dealer;
+        spillere = new ArrayList<>();
+        deck = new Deck();
+        pulje = 0;
+    }
+
+    public void startSpil() {
+        deck = new Deck();
+    }
+
+    public void giveCard() {
+        for (int i = 0; i < spillere.size(); i++) {
+            Card[] cards = new Card[5];
+            for (int j = 0; j < 5; j++) {
+                cards[j] = deck.drawFromDeck();
+            }
+            spillere.get(i).addHand(cards);
+        }
+    }
+
+    public void endGame() {
+    }
     
+    public void addPlayer(Spiller spiller){
+        spillere.add(spiller);
+    }
 }
