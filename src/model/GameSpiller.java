@@ -67,7 +67,7 @@ public class GameSpiller implements Comparable<GameSpiller>
             check = true;
         }
         else
-        {    //            Spilleren skal evt. checke, folde eller gå all-in ?her?
+        {
             check = false;
         }
         return check;
