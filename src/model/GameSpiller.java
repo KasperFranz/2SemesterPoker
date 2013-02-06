@@ -105,6 +105,10 @@ public class GameSpiller implements Comparable<GameSpiller>
         this.stack = stack;
     }
 
+    /**
+     * @param Intet
+     * @return hand, et hånd objekt
+     */
     public Hand bestHand()
     {
     // laves om når en beskrivelse er der til
@@ -121,6 +125,10 @@ public class GameSpiller implements Comparable<GameSpiller>
         return hand;
     }
 
+    /**
+     * @param gs af typen GameSpiller
+     * @return integer 1, 0 eller -1 i variabel tmp
+     */
     @Override
     public int compareTo(GameSpiller gs)
     {

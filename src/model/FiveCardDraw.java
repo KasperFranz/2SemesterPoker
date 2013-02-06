@@ -51,6 +51,13 @@ public class FiveCardDraw {
         }
     }
 
+    /** 
+     * endGame()
+     * Bruges til at se hvilken/hvilke spiller(e) der har vundet og fordeler 
+     * indsatsen mellem vinderne
+     * @param intet
+     * @return intet
+     */
     public void endGame() {
         ArrayList<GameSpiller> winners = new ArrayList<>();
         ArrayList<GameSpiller> players = spillere;

@@ -5,8 +5,8 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
+import view.AdminGUI;
 
 /**
  *
@@ -14,12 +14,33 @@ import java.util.Collections;
  */
 public class TestMain
 {
-
+    private static AdminGUI player1;
+    private static AdminGUI player2;
+    private static AdminGUI player3;
+    private static AdminGUI player4;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args)
     {
+        // Bruges til at "starte/vise" FiveCardDrawGUI
+        //new FiveCardDrawGUI().setVisible(true);
+        
+        // Bruges til at "starte/vise" 4 AdminGUI'er
+        //player1.setBounds(x-pos, y-pos, width, height); // Kun til info
+//        player1 = new AdminGUI();
+//        player1.setBounds(300, 0, 400, 350);
+//        player1.setVisible(true);
+//        player2 = new AdminGUI();
+//        player2.setBounds(710, 0, 400, 350);
+//        player2.setVisible(true);
+//        player3 = new AdminGUI();
+//        player3.setBounds(710, 360, 400, 350);
+//        player3.setVisible(true);
+//        player4 = new AdminGUI();
+//        player4.setBounds(300, 360, 400, 350);
+//        player4.setVisible(true);
+        
         Card[] kort = new Card[5];
         kort[0] = new Card(1, 1);
         kort[1] = new Card(1, 10);
