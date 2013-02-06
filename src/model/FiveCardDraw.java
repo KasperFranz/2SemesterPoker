@@ -24,6 +24,13 @@ public class FiveCardDraw {
         deck = new Deck();
         pulje = 0;
     }
+    
+    public FiveCardDraw() {
+        this.dealer = null;
+        spillere = new ArrayList<>();
+        deck = new Deck();
+        pulje = 0;
+    }
 
     public void startSpil() {
         deck = new Deck();
