@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Jacob
@@ -40,7 +42,7 @@ public class GameSpiller implements Comparable<GameSpiller>
     {
         return cards;
     }
-
+    
     public boolean bet()
     {
         boolean bet;
@@ -105,7 +107,7 @@ public class GameSpiller implements Comparable<GameSpiller>
 
     public Hand bestHand()
     {
-// laves om når en beskrivelse er der til
+    // laves om når en beskrivelse er der til
         Hand hand;
         if (cards.length == 5)
         {
@@ -120,8 +122,34 @@ public class GameSpiller implements Comparable<GameSpiller>
     }
 
     @Override
-    public int compareTo(GameSpiller o)
+    public int compareTo(GameSpiller gs)
     {
-        return 0;
+        int tmp;
+        tmp = 0;
+
+        // Vil det her virke??
+        tmp = this.bestHand().compareTo(gs.bestHand());
+        
+        // Vil det her eller tilsvarende virke??
+//        for (int x = 0; x < 6; x++)
+//        {
+//            if(this.cards[x].getRank() == gs.cards[x].getRank())
+//            {
+//                tmp = 0;
+//                x = 6;
+//            }
+//            else if(this.bestHand().getRank() > gs.bestHand().getRank())
+//            {
+//                tmp = 1;
+//                x = 6;
+//            }
+//            else
+//            {
+//                tmp = -1;
+//                x = 6;
+//            }
+//        }
+        
+        return tmp;
     }
 }

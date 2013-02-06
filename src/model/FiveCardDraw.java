@@ -5,6 +5,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -44,6 +45,15 @@ public class FiveCardDraw {
     }
 
     public void endGame() {
+        ArrayList<GameSpiller> winners = new ArrayList<>();
+        ArrayList<GameSpiller> players = spillere;
+        Collections.sort(players);
+        for (int i = 0; i < players.size(); i++)
+        {
+            if(players.get(i).bestHand() == players.get(0).bestHand()){
+                winners.add(players.get(i));
+            }
+        }
     }
 
     public void addPlayer(GameSpiller spiller) {
@@ -53,4 +63,6 @@ public class FiveCardDraw {
     public void addToPot(int bet) {
         pulje = pulje + bet;
     }
+
+
 }
