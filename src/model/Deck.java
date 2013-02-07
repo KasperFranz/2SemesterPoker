@@ -42,10 +42,12 @@ public class Deck {
     }
     // Tjekker om decket er tomt
     public boolean isEmpty() {
+        boolean result;
         if(cards.isEmpty()) {
-            return true;
+            result = true;
         } else {
-            return false;
+            result = false;
         }
+        return result;
     }
 }
