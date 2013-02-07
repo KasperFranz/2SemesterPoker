@@ -105,6 +105,18 @@ public class TestMain
         /*while (!d.isEmpty()){
          System.out.println(d.drawFromDeck());
          }*/
+        
+        //Test af BestHand() i gamespiller
+        System.out.println("");
+        Deck deck = new Deck();
+        Card[] test = new Card[7];
+        for (int i = 0; i < test.length; i++) {
+            test[i] = deck.drawFromDeck();
+            System.out.print(""+test[i].toString()+" - ");
+        }
 
+        GameSpiller gs = new GameSpiller(test);
+        
+        System.out.println("\n"+gs.bestHand());
     }
 }

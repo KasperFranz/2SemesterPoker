@@ -250,6 +250,10 @@ public class Hand implements Comparable<Hand>
         return result;
 
     }
+    
+    public String displayCard(int i){        
+        return cards[i].toString();
+    }
 
     @Override
     public int compareTo(Hand hand)
