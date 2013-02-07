@@ -8,13 +8,13 @@ package view;
  *
  * @author Allan
  */
-public class BordGUI extends javax.swing.JFrame
+public class TexasHoldEmGUI extends javax.swing.JFrame
 {
 
     /**
      * Creates new form BordGUI
      */
-    public BordGUI()
+    public TexasHoldEmGUI()
     {
         initComponents();
         
@@ -163,7 +163,7 @@ public class BordGUI extends javax.swing.JFrame
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(651, 11, 216, 187);
+        jPanel1.setBounds(651, 11, 0, 0);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -230,7 +230,7 @@ public class BordGUI extends javax.swing.JFrame
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(10, 11, 216, 187);
+        jPanel2.setBounds(10, 11, 0, 0);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -297,7 +297,7 @@ public class BordGUI extends javax.swing.JFrame
         );
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(10, 421, 216, 187);
+        jPanel3.setBounds(10, 421, 0, 0);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -365,7 +365,7 @@ public class BordGUI extends javax.swing.JFrame
         );
 
         getContentPane().add(jPanel4);
-        jPanel4.setBounds(651, 421, 216, 187);
+        jPanel4.setBounds(651, 421, 0, 0);
 
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -450,7 +450,7 @@ public class BordGUI extends javax.swing.JFrame
         );
 
         getContentPane().add(jPanel5);
-        jPanel5.setBounds(232, 182, 413, 248);
+        jPanel5.setBounds(232, 182, 413, 0);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -529,7 +529,7 @@ public class BordGUI extends javax.swing.JFrame
                 .addComponent(jLabel42)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(callIndsats)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(btnCall)
                 .addContainerGap())
         );
@@ -559,7 +559,7 @@ public class BordGUI extends javax.swing.JFrame
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel41)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(btnFold)
                 .addContainerGap())
         );
@@ -607,7 +607,7 @@ public class BordGUI extends javax.swing.JFrame
         jPanel6Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jPanel7, jPanel8, jPanel9});
 
         getContentPane().add(jPanel6);
-        jPanel6.setBounds(232, 436, 413, 172);
+        jPanel6.setBounds(232, 436, 0, 0);
 
         jPanel10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -645,7 +645,7 @@ public class BordGUI extends javax.swing.JFrame
         );
 
         getContentPane().add(jPanel10);
-        jPanel10.setBounds(232, 11, 413, 165);
+        jPanel10.setBounds(232, 11, 413, 0);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
