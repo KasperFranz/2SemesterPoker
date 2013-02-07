@@ -10,6 +10,7 @@ package model;
  */
 import java.util.Random;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Deck {
 
@@ -26,14 +27,15 @@ public class Deck {
                 cards.add(new Card(a, b));
             }
         }
-        // Blander kortene i decket
-        for (int x = 1; x < cards.size(); x++) {
-            int randNum = randomGen.nextInt(cards.size() - 1);
-            tmp = cards.get(randNum);
-            cards.set(randNum, cards.get(x));
-            cards.set(x, tmp);
-        } // Collections.shuffle(cards) i stedet?
+
+        Shuffle();
     }
+    
+    //Blander kortene
+    public void Shuffle(){
+        Collections.shuffle(cards);
+    }
+    
     // Returner det første kort fra bunken og fjerner det samtidig
     public Card drawFromDeck() {
         return cards.remove(0);
