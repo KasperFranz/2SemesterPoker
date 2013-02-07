@@ -42,6 +42,7 @@ public class FiveCardDrawTableGUI extends javax.swing.JFrame
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnNewPlayer = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         player2Panel = new javax.swing.JPanel();
         player2Name = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -101,7 +102,18 @@ public class FiveCardDrawTableGUI extends javax.swing.JFrame
             }
         });
         jPanel2.add(btnNewPlayer);
-        btnNewPlayer.setBounds(90, 10, 120, 23);
+        btnNewPlayer.setBounds(10, 10, 120, 23);
+
+        jButton1.setText("Start spillet");
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1);
+        jButton1.setBounds(170, 10, 120, 23);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 160, 300, 41);
@@ -241,6 +253,11 @@ public class FiveCardDrawTableGUI extends javax.swing.JFrame
         }
     }//GEN-LAST:event_btnNewPlayerActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
+    {//GEN-HEADEREND:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -291,6 +308,7 @@ public class FiveCardDrawTableGUI extends javax.swing.JFrame
 //    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNewPlayer;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
